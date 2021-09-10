@@ -12,7 +12,7 @@ See the full blog post with instructions at https://debricked.com/blog/2020/05/1
 Step by step instructions for installing dmarc-visualizer by debricked on Windows 10 with WSL 2 and with imap and GeoLite2 Database support.
 
 ### Activate WSL 2 and download a Linux Distro
-* First of all activate WSL2 in the Windows feature settings and restart your computer
+* First of all, if you haven't already, activate WSL2 in the Windows feature settings and restart your computer
 * Go to the Microsoft Store and search for Ubuntu and install it
 * More details can be found here: https://docs.microsoft.com/en-us/windows/wsl/install-win10
 
@@ -98,7 +98,7 @@ services:
 ### Final Step docker-compose up
 * After you performed all these steps you can start and run your stack with:
 `sudo docker-compose up`
-* Got to `localhost:3000`on your browser and you should see the Grafana Log-In page
+* Got to `localhost:3000`on your browser and you should see the Grafana log-in page
 * The default username is `admin`and the default password is `admin` you will then be asked to change the admin password
 * If you don't want a log in, uncomment `GF_AUTH_ANONYMOUS_ENABLED: 'true'` at the bottom of the docker-compose.yml file
 * You can now open your DMARC dashoboard and it will look something like the screeenshot below
