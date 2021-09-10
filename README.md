@@ -42,6 +42,57 @@ sudo curl "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-C
   && mkdir -p /var/opt/maxmind/ \
   && mv GeoLite2-Country_*/GeoLite2-Country.mmdb /var/opt/maxmind/GeoLite2-Country.mmdb
 ```
+### Copy the GeoLite2-Country database to the right location
+
+### Configure imap in parsedmarc.ini
+* Open your parsedmarc.ini file under ./parsedmarc/parsedmarc.ini
+```
+[general]
+save_aggregate = True
+save_forensic = True
+output = /output/
+
+[imap]
+host = your_host
+user = your_user
+password = your_password
+watch = True
+
+[elasticsearch]
+hosts = elasticsearch:9200
+ssl = False
+```
+You can change these paramaters to your needs. Detailed documentation can be found here: https://domainaware.github.io/parsedmarc/index.html#configuration-file
+
+### Update docker-compose.yml
+* Open docker.compose.yml and change it as shown below:
+```
+version: '3.5'
+services:
+  parsedmarc:
+    build: ./parsedmarc/
+    volumes:
+      - ./parsedmarc/parsedmarc.ini:/parsedmarc.ini:ro
+      - ./output_files:/output
+    command: parsedmarc -c /parsedmarc.ini
+    depends_on:
+      - elasticsearch
+    restart: on-failure
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.1
+    environment:
+      - discovery.type=single-node
+
+  grafana:
+    build: ./grafana/
+    ports:
+      - 3000:3000
+    user: root
+    environment:
+      GF_INSTALL_PLUGINS: grafana-piechart-panel,grafana-worldmap-panel
+      GF_AUTH_ANONYMOUS_ENABLED: 'true'
+```
 
 ## Screenshot
 
