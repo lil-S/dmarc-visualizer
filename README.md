@@ -101,6 +101,7 @@ services:
 * Got to `localhost:3000`on your browser and you should see the Grafana Log-In page
 * The default username is `admin`and the default password is `admin` you will then be asked to change the admin password
 * If you don't want a log in, uncomment `GF_AUTH_ANONYMOUS_ENABLED: 'true'` at the bottom of the docker-compose.yml file
+* You can now open your DMARC dashoboard and it will look something like the screeenshot below
 
 ## Screenshot
 
