@@ -43,6 +43,8 @@ sudo curl "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-C
   && mv GeoLite2-Country_*/GeoLite2-Country.mmdb /var/opt/maxmind/GeoLite2-Country.mmdb
 ```
 ### Copy the GeoLite2-Country database to the right location
+* Copy `GeoLite2-Country.mmdb` to the `./parsedmarc` folder
+* Uncomment `COPY GeoLite2-Country.mmdb /usr/share/GeoIP/GeoLite2-Country.mmdb` at the bottom of the Dockerfile in `./parsedmarc`
 
 ### Configure imap in parsedmarc.ini
 * Open your parsedmarc.ini file under ./parsedmarc/parsedmarc.ini
@@ -91,8 +93,14 @@ services:
     user: root
     environment:
       GF_INSTALL_PLUGINS: grafana-piechart-panel,grafana-worldmap-panel
-      GF_AUTH_ANONYMOUS_ENABLED: 'true'
+      # GF_AUTH_ANONYMOUS_ENABLED: 'true'
 ```
+### Final Step docker-compose up
+* After you performed all these steps you can start and run your stack with:
+`sudo docker-compose up`
+* Got to `localhost:3000`on your browser and you should see the Grafana Log-In page
+* The default username is `admin`and the default password is `admin` you will then be asked to change the admin password
+* If you don't want a log in, uncomment `GF_AUTH_ANONYMOUS_ENABLED: 'true'` at the bottom of the docker-compose.yml file
 
 ## Screenshot
 
