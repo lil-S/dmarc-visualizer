@@ -102,7 +102,5 @@ services:
 * The default username is `admin`and the default password is `admin` you will then be asked to change the admin password
 * If you don't want a log in, uncomment `GF_AUTH_ANONYMOUS_ENABLED: 'true'` at the bottom of the docker-compose.yml file
 * You can now open your DMARC dashoboard and it will look something like the screeenshot below
+![Dashboard](https://user-images.githubusercontent.com/56894465/132849980-55687d32-6edc-4658-b039-39858abb05c5.PNG)
 
-## Screenshot
-
-![Screenshot of Grafana dashboard](/big_screenshot.png?raw=true)
