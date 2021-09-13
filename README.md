@@ -29,7 +29,7 @@ Download Docker from here: https://docs.docker.com/desktop/windows/install/
 ### Download dmarc-visualizer to your local machine
 * Open up your Linux distro and update the package index: `sudo apt update`
 * Install git by typing: `sudo apt install git`
-* Clone the repository: `git clone https://github.com/debricked/dmarc-visualizer.git`
+* Clone the repository: `git clone https://github.com/lil-S/dmarc-visualizer.git`
 * Open the repsoitory: `cd dmarc-viszualizer`
 
 ### Get the GeoLite2 Database
